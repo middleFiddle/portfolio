@@ -2,27 +2,48 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { allPosts } from "contentlayer/generated";
-console.log(allPosts[0].body.html);
 
 export async function getStaticProps() {
-  const [first, second] = [allPosts[0].body.html, allPosts[1].body.html];
+  const posts = allPosts;
 
   return {
     props: {
-      first,
-      second,
+      posts,
     },
   };
 }
 
-export default function Home({ first, second }) {
-  const [bookmark, setBookmark] = useState(0);
+const titles = [
+  "Intro",
+  "Tell Me More",
+  "Interview Questions",
+  "Personal History",
+  "I'm Complicated",
+];
+
+export default function Home({ posts }) {
   const reveal = () => {
-    setBookmark((prev) => prev + 1);
+    console.log("clicked");
   };
 
+  const getText = (t) => {
+    return posts.find((p) => p.title == t);
+  };
+
+  console.log(getText("Intro"));
+
+  const leaflets = titles.map((t) => {
+    return (
+      <div
+        id={t}
+        key={getText(t).id}
+        dangerouslySetInnerHTML={{ __html: getText(t).body.html }}
+      ></div>
+    );
+  });
+
   return (
-    <div className="bg-slate-800 min-h-screen">
+    <div className="bg-slate-800 min-h-screen flex flex-col">
       <Head>
         <title>Ryan Gregory</title>
         <meta
@@ -32,8 +53,8 @@ export default function Home({ first, second }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col justify-evenly p-16">
-        <div className="font-sans mb-4 ">
+      <section id="intro" className="flex flex-col justify-evenly p-16">
+        <div id="title" className="font-sans mb-4 ">
           <h1 className="text-3xl font-extralight text-emerald-100">
             Ryan Gregory
           </h1>
@@ -46,31 +67,29 @@ export default function Home({ first, second }) {
             Ryan.middleFiddle@gmail.com
           </a>
         </div>
-        <div className="font-mono text-sky-100 flex flex-col max-w-sm overflow-y-scroll text-justify leading-snug pr-4">
-          {/*           <p className="pb-4 ">
-
-          </p>
-
-          <p className="pb-4">
-
-          </p>
-
-          <p className="pb-4">
-            I also teach people how to play music, most often on the violin, and
-            I play viola with the Atlanta Opera.
-          </p> */}
-          <div dangerouslySetInnerHTML={{ __html: first }}></div>
-          {bookmark > 0 && (
-            <div dangerouslySetInnerHTML={{ __html: second }}></div>
-          )}
-          <button
-            className="bg-violet-200 hover:bg-amber-50 text-slate-800"
-            onClick={reveal}
-          >
-            Tell me more
-          </button>
+        <div
+          id="text-box"
+          className="font-mono text-sky-100 flex flex-col max-w-sm max-h-96 overflow-y-scroll text-justify leading-snug pr-4 p"
+        >
+          {leaflets}
         </div>
-      </main>
+        <button
+          className="bg-violet-200 hover:bg-amber-50 text-slate-800"
+          onClick={reveal}
+        >
+          Tell me more
+        </button>
+      </section>
+
+      <section id="contact">
+        <h2>Recruit me!</h2>
+        <p>
+          I am currently seeking my first full-time front-end or full stack
+          engineering role. If you are seeking candidate with a collaborative
+          mindset, strong web fundamentals, and a curious, inventive mind,
+          please reach out.
+        </p>
+      </section>
 
       {/*       <footer className={styles.footer}>
         <a
