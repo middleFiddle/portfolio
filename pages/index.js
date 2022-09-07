@@ -31,7 +31,7 @@ export default function Home({ posts }) {
   const leaflets = titles.map((t) => {
     return (
       <div
-        className="snap-start my-auto"
+        className="snap-end my-auto"
         id={t}
         key={getText(t).id}
         dangerouslySetInnerHTML={{ __html: getText(t).body.html }}
