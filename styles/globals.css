@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+#text-box {
+  scrollbar-gutter: stable;
+}
+
 p {
   padding-bottom: 1rem;
 }

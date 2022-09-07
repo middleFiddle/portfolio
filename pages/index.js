@@ -1,16 +1,18 @@
-import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
-import { allPosts } from "contentlayer/generated";
+import Head from "next/head"
+import Image from "next/image"
+import { useState, useRef, useEffect } from "react"
+import { allPosts } from "contentlayer/generated"
+import Link from "next/link"
+import ProjectCard from "../components/ProjectCard"
 
 export async function getStaticProps() {
-  const posts = allPosts;
+  const posts = allPosts
 
   return {
     props: {
       posts,
     },
-  };
+  }
 }
 
 const titles = [
@@ -19,33 +21,37 @@ const titles = [
   "Interview Questions",
   "Personal History",
   "I'm Complicated",
-];
+]
 
 export default function Home({ posts }) {
   const getText = (t) => {
-    return posts.find((p) => p.title == t);
-  };
-
-  console.log(getText("Intro"));
+    return posts.find((p) => p.title == t)
+  }
 
   const leaflets = titles.map((t) => {
     return (
       <div
+        className="snap-start my-auto"
         id={t}
         key={getText(t).id}
         dangerouslySetInnerHTML={{ __html: getText(t).body.html }}
       ></div>
-    );
-  });
+    )
+  })
 
-  const [text, setText] = useState([leaflets[0]]);
-  console.log(text);
-  const reveal = () => {
-    console.log("clicked");
+  const [text, setText] = useState([leaflets[0]])
+  const textRef = useRef()
+  //console.log(text);
+
+  useEffect(() => {
+    textRef.current.scrollTop = textRef.current.scrollTopMax
+  }, [text])
+
+  const reveal = (e) => {
     if (text.length < posts.length) {
-      setText((prev) => prev.concat([leaflets[prev.length]]));
+      setText((prev) => prev.concat([leaflets[prev.length]]))
     }
-  };
+  }
 
   return (
     <div className="bg-slate-900 min-h-screen flex">
@@ -72,7 +78,8 @@ export default function Home({ posts }) {
           </div>
           <div
             id="text-box"
-            className="font-mono text-sky-50 max-h-96 overflow-y-auto text-justify leading-snug pr-4 tracking-wide "
+            className="font-mono text-sky-50 max-w-sm h-96 overflow-y-auto text-justify flex flex-col justify start leading-snug tracking-wide snap-y scrollbar-thin snap-mandatory ml-0 gutter"
+            ref={textRef}
           >
             {text}
           </div>
@@ -94,7 +101,9 @@ export default function Home({ posts }) {
           </p>
         </section>
       </div>
-
+      <div className="container">
+        <ProjectCard></ProjectCard>
+      </div>
       {/*       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -108,5 +117,5 @@ export default function Home({ posts }) {
         </a>
       </footer> */}
     </div>
-  );
+  )
 }
