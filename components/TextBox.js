@@ -1,11 +1,10 @@
 import Link from "next/link"
 import React from "react"
 
-const TextBox = () => {
+const TextBox = ({ readMe }) => {
   return (
-    <div>
-      README.md excerpt ...
-      <a className="hover:bg-slate-500 hover:text-emerald-200">Read More</a>
+    <div className="bg-sky-50 text-violet-900 ring-1 font-serif text-lg leading-snug tracking-wide overflow-hidden h-96">
+      {readMe}
     </div>
   )
 }

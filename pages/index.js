@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react"
 import { allPosts } from "contentlayer/generated"
 import Link from "next/link"
 import ProjectCard from "../components/ProjectCard"
+import TitleCard from "../components/TitleCard"
+import CallToAction from "../components/CallToAction"
 
 export async function getStaticProps() {
   const posts = allPosts
@@ -21,6 +23,7 @@ const titles = [
   "Interview Questions",
   "Personal History",
   "I'm Complicated",
+  "Atlanta Violins Project",
 ]
 
 export default function Home({ posts }) {
@@ -28,33 +31,19 @@ export default function Home({ posts }) {
     return posts.find((p) => p.title == t)
   }
 
-  const leaflets = titles.map((t) => {
+  const readMe = (t) => {
     return (
       <div
-        className="snap-end my-auto"
         id={t}
         key={getText(t).id}
         dangerouslySetInnerHTML={{ __html: getText(t).body.html }}
+        S
       ></div>
     )
-  })
-
-  const [text, setText] = useState([leaflets[0]])
-  const textRef = useRef()
-  //console.log(text);
-
-  useEffect(() => {
-    textRef.current.scrollTop = textRef.current.scrollTopMax
-  }, [text])
-
-  const reveal = (e) => {
-    if (text.length < posts.length) {
-      setText((prev) => prev.concat([leaflets[prev.length]]))
-    }
   }
 
   return (
-    <div className="bg-slate-900 min-h-screen flex">
+    <div className="bg-slate-900 min-h-screen ">
       <Head>
         <title>Ryan Gregory</title>
         <meta
@@ -63,46 +52,21 @@ export default function Home({ posts }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="container max-w-md gap-y-12 flex flex-col justify-around p-16">
-        <section id="intro" className="">
-          <div id="title" className="font-sans mb-4 ">
-            <h1 className="text-3xl font- text-emerald-300">Ryan Gregory</h1>
-            <h1 className="text-xl text-rose-300">Web Developer</h1>
-            <h1 className="text-md font-light text-slate-200">Atlanta, GA</h1>
-            <a
-              className="text-violet-200 text-sm font-extralight   hover:text-amber-50 hover:text-md"
-              href="mailto: Ryan.middleFiddle@gmail.com"
-            >
-              Ryan.middleFiddle@gmail.com
-            </a>
-          </div>
+      <div className="flex justify-around content-center p-16 align">
+        <section id="intro" className="flex-col max-w-xl m-auto">
+          <TitleCard></TitleCard>
           <div
             id="text-box"
-            className="font-mono text-sky-50 max-w-sm h-96 overflow-y-auto text-justify flex flex-col justify start leading-snug tracking-wide snap-y scrollbar-thin snap-mandatory ml-0 gutter"
-            ref={textRef}
+            className="font-serif text-lg text-indigo-50 leading-relaxed tracking-widest"
           >
-            {text}
+            {readMe("Intro")}
           </div>
-          <button
-            className="bg-violet-200 hover:bg-amber-50 text-slate-800"
-            onClick={reveal}
-          >
-            Tell me more
-          </button>
+          <CallToAction></CallToAction>
         </section>
 
-        <section className="m-auto max-w-sm" id="contact">
-          <h2 className="text-rose-400 italic text-3xl font-semibold font-serif">
-            Recruit me!
-          </h2>
-          <p className="text-emerald-200 italic tracking-wide">
-            If you are seeking a candidate with a collaborative mindset, strong
-            web fundamentals, and a curious mind, please reach out.
-          </p>
+        <section className="max-w-xl m-auto" id="Projects">
+          <ProjectCard readMe={readMe("Atlanta Violins Project")}></ProjectCard>
         </section>
-      </div>
-      <div className="container">
-        <ProjectCard></ProjectCard>
       </div>
       {/*       <footer className={styles.footer}>
         <a

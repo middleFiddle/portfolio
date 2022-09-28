@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-#text-box {
-  scrollbar-gutter: stable;
+h1 {
+  white-space: nowrap;
 }
 
 p {
