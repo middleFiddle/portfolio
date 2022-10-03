@@ -1,11 +1,30 @@
 @tailwind base;
+
+@layer base {
+  ul {
+    @apply list-disc;
+    @apply list-inside;
+    @apply pb-4;
+  }
+  li {
+    @apply pb-4;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
 
 h1 {
   white-space: nowrap;
+  margin: 0.5rem 0;
 }
 
 p {
+  padding-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
   padding-bottom: 1rem;
 }

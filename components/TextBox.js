@@ -3,7 +3,7 @@ import React from "react"
 
 const TextBox = ({ readMe }) => {
   return (
-    <div className="bg-sky-50 text-violet-900 ring-1 font-serif text-lg leading-snug tracking-wide overflow-hidden h-96">
+    <div className="bg-sky-50 text-slate-900 font-mono text-lg leading-snug tracking-wide overflow-auto h-96">
       {readMe}
     </div>
   )

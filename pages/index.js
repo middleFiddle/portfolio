@@ -34,10 +34,9 @@ export default function Home({ posts }) {
   const readMe = (t) => {
     return (
       <div
-        id={t}
+        id={t.split(" ").join("")}
         key={getText(t).id}
         dangerouslySetInnerHTML={{ __html: getText(t).body.html }}
-        S
       ></div>
     )
   }
@@ -57,7 +56,7 @@ export default function Home({ posts }) {
           <TitleCard></TitleCard>
           <div
             id="text-box"
-            className="font-serif text-lg text-indigo-50 leading-relaxed tracking-widest"
+            className="font-serif text-lg leading-relaxed tracking-widest opacity-100 text-indigo-50"
           >
             {readMe("Intro")}
           </div>
