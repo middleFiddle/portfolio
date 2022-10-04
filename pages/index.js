@@ -6,6 +6,7 @@ import Link from "next/link"
 import ProjectCard from "../components/ProjectCard"
 import TitleCard from "../components/TitleCard"
 import CallToAction from "../components/CallToAction"
+import Navbar from "../components/Navbar"
 
 export async function getStaticProps() {
   const posts = allPosts
@@ -51,6 +52,7 @@ export default function Home({ posts }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar></Navbar>
       <div className="flex justify-around content-center p-16 align">
         <section id="intro" className="flex-col max-w-xl m-auto">
           <TitleCard></TitleCard>
