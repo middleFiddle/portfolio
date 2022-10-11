@@ -65,7 +65,7 @@ export default function Home(
             className="font-serif text-lg leading-relaxed tracking-widest opacity-100 text-indigo-50"
           >
             <p>
-              I&aposm a web developer from Atlanta 🍑. I focus on enabling
+              I{"\u0027"}m a web developer from Atlanta 🍑. I focus on enabling
               contractors, artists, and small businesses to expand their
               capacity to serve clients and customers, while reducing the burden
               of repetitive tasks that can create bottlenecks, especially for
