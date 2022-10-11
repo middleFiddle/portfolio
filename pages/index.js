@@ -87,7 +87,7 @@ export default function Home(
           </h1>
           <ProjectCard
             readMe={
-              "This project began as a replacement for a static landing page is currently being developed into a full-stack application.Built with React and Tailwind in Next.js with Prisma, MySQL through Planetscale, and S3."
+              "This project began as a replacement for a static landing page is currently being developed into a full-stack application. Built with React and Tailwind in Next.js with Prisma, MySQL through Planetscale, and S3."
             }
           ></ProjectCard>
         </section>
