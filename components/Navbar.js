@@ -1,4 +1,4 @@
-import React from "react"
+import Link from "next/link"
 
 const Navbar = () => {
   return (
@@ -6,7 +6,7 @@ const Navbar = () => {
       <ul className="flex flex-wrap list-none justify-center items-center  gap-4 font-mono tracking-tighter">
         <li className="basis-[100%] text-center">
           <h1 className="text-emerald-200 hover:text-rose-300 text-2xl font-sans p-0 font-thin tracking-wide">
-            <a href="index.html">Ryan Gregory</a>
+            <Link href="/">Ryan Gregory</Link>
           </h1>
         </li>
         <li>
