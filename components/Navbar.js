@@ -25,7 +25,7 @@ const Navbar = () => {
           <a href="https://github.com/middleFiddle">Github</a>
         </li>
         <li>
-          <a href="https://drive.google.com/file/d/1Cdn9ZkSuXY_D3kPg0lDGxe6NUdKojMiM/view?usp=sharing">
+          <a href="https://drive.google.com/file/d/12RxPKQTj0WyWPecX_HFIUxHHJu7a4bpX/view?usp=sharing">
             Resume
           </a>
         </li>
