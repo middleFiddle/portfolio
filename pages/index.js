@@ -7,6 +7,7 @@ import ProjectCard from "../components/ProjectCard"
 import TitleCard from "../components/TitleCard"
 import CallToAction from "../components/CallToAction"
 import Navbar from "../components/Navbar"
+import ContactForm from "../components/ContactForm"
 /* 
 export async function getStaticProps() {
   const posts = allPosts
@@ -47,16 +48,7 @@ export default function Home(
   } */
 
   return (
-    <div className="bg-slate-900 min-h-screen ">
-      <Head>
-        <title>Ryan Gregory</title>
-        <meta
-          name="This page highlights Ryan Gregory's career in web development"
-          content="I built this site with NextJS and TailwindCSS"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Navbar></Navbar>
+    <div>
       <div className="flex flex-col justify-center p-16 gap-8 gutter">
         <section id="intro" className="max-w-md mx-auto">
           <TitleCard></TitleCard>
