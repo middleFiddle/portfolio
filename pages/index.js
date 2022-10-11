@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Image from "next/image"
 import { useState, useRef, useEffect } from "react"
-import { allPosts } from "contentlayer/generated"
+import { allPosts } from "@contentlayer/generated"
 import Link from "next/link"
 import ProjectCard from "../components/ProjectCard"
 import TitleCard from "../components/TitleCard"
