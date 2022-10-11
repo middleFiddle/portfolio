@@ -3,7 +3,7 @@ import React from "react"
 const CallToAction = () => {
   return (
     <button
-      className="max-w-md mx-auto transition-all duration-1000 easy-in-out hover:cursor-pointer border hover:bg-indigo-400 hover:bg-opacity-40 hover:border-slate-400 rounded-md border-slate-500 group flex flex-col justify-center text-center p-1 h-40 bg-opacity-25 bg-indigo-400 "
+      className="max-w-md mx-auto transition-all duration-1000 easy-in-out hover:cursor-pointer border hover:bg-indigo-400 hover:bg-opacity-40 hover:border-slate-400 rounded-md border-slate-500 group flex flex-col justify-center items-center text-center p-1 h-40 bg-opacity-25 bg-indigo-400 "
       id="contact"
     >
       <h6 className="transition-all duration-1000 easy-in-out text-emerald-200 text-lg italic font-serif tracking-tightest group-hover:text-emerald-300 leading-snug ">
