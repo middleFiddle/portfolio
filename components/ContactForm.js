@@ -37,7 +37,9 @@ const ContactForm = () => {
         placeholder="{ email@address.com }"
       />
       <label>
-        <span className="label-text">Pick the format(s) you'd like:</span>
+        <span className="label-text">
+          Pick the format(s) you{"\u0027"}d like:
+        </span>
       </label>
       <div className="btn-group space-x-2">
         <label className="label cursor-pointer flex space-x-4">
