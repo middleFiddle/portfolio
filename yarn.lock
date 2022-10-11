@@ -17,23 +17,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@contentlayer/cli@0.2.7":
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/@contentlayer/cli/-/cli-0.2.7.tgz#747c964d0658842d0214468f4f4d12a6bcd12dc5"
-  integrity sha512-0+OcuYVqciSw0nOL0JXbhr5q00e1zD7c1VYxKY5N9G1neDy3JN5ovpMa8w0E7hfsbEPiW9/vi2veoA4G3N3aMA==
-  dependencies:
-    "@contentlayer/core" "0.2.7"
-    "@contentlayer/utils" "0.2.7"
-    clipanion "^3.2.0-rc.11"
-    typanion "^3.9.0"
-
-"@contentlayer/client@0.2.7":
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/@contentlayer/client/-/client-0.2.7.tgz#8426d9ec55e5f7d714937a6dd3ae1cae18d08ec9"
-  integrity sha512-+cDVV64rKdIoXnrp0m3QkyPedRr22vZ+CmKybYUV2kUrcK0XB8ZqEh7efxPTLVSRevmsGwx155DWXXAG5HCPaQ==
-  dependencies:
-    "@contentlayer/core" "0.2.7"
-
 "@contentlayer/core@0.2.7":
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/@contentlayer/core/-/core-0.2.7.tgz#54c34ca4fa736391ab534a8afb4eab54a0208296"
@@ -52,22 +35,6 @@
     source-map-support "^0.5.21"
     type-fest "^2.18.0"
     unified "^10.1.2"
-
-"@contentlayer/source-files@0.2.7":
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/@contentlayer/source-files/-/source-files-0.2.7.tgz#300add14cb505088026c99ab4e5c94f8de7288e5"
-  integrity sha512-f293SyHnFRhuPqEZR66bDvOty5ZE53Qd8EzyKQKUUINJnCdclz38ABnMZjPX4IUdbyo7HOmL9uC1/IpcTaU+WQ==
-  dependencies:
-    "@contentlayer/core" "0.2.7"
-    "@contentlayer/utils" "0.2.7"
-    chokidar "^3.5.3"
-    fast-glob "^3.2.11"
-    gray-matter "^4.0.3"
-    imagescript "^1.2.9"
-    micromatch "^4.0.5"
-    ts-pattern "^4.0.5"
-    unified "^10.1.2"
-    yaml "^1.10.2"
 
 "@contentlayer/utils@0.2.7":
   version "0.2.7"
@@ -1262,13 +1229,6 @@ cli-boxes@^1.0.0:
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
   integrity sha512-3Fo5wu8Ytle8q9iCzS4D2MWVL2X7JVWRiS1BnXbTFDhS9c/REkM9vd1AmabsoZoY5/dGi5TT9iKL8Kb6DeBRQg==
 
-clipanion@^3.2.0-rc.11:
-  version "3.2.0-rc.11"
-  resolved "https://registry.yarnpkg.com/clipanion/-/clipanion-3.2.0-rc.11.tgz#765661c9aeda8ecc14035a61a4b19b361f9a5400"
-  integrity sha512-fugY+N5uPop31VDYhjTc31DwPjCCLx6kmvdlFTf8fztpOxwplopiZr1XSHSA2qNmfpcXlJZKJsXMkxvXmdzK7g==
-  dependencies:
-    typanion "^3.8.0"
-
 cliui@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-4.1.0.tgz#348422dbe82d800b3022eef4f6ac10bf2e4d1b49"
@@ -1404,17 +1364,6 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==
-
-contentlayer@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/contentlayer/-/contentlayer-0.2.7.tgz#1f90473b52a02d768ff2f3005bfbc696566a4574"
-  integrity sha512-48XNxryTYrjkA5vsjQRobC+nvuNnIiMlPjE3w+XP/+3XFaPbonGe/j/patDR6QfBSH85o5/a8Lb3gaY5kQ3L0Q==
-  dependencies:
-    "@contentlayer/cli" "0.2.7"
-    "@contentlayer/client" "0.2.7"
-    "@contentlayer/core" "0.2.7"
-    "@contentlayer/source-files" "0.2.7"
-    "@contentlayer/utils" "0.2.7"
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
@@ -2914,11 +2863,6 @@ ignore@^5.2.0:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
   integrity sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==
 
-imagescript@^1.2.9:
-  version "1.2.9"
-  resolved "https://registry.yarnpkg.com/imagescript/-/imagescript-1.2.9.tgz#11332b5f1e21d469471cab5cece354c88c41a0b5"
-  integrity sha512-xPMxxTxKfURedWNF5WlC4iM+p/RQrqY5mLQTbZVGquUchhDwh3C6paxtITCXn6qTxcWnM224EhNpJXPWjbB+4w==
-
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.3.0.tgz#37162c25fcb9ebaa2e6e53d5b4d88ce17d9e0c2b"
@@ -4025,7 +3969,7 @@ micromark@^3.0.0:
     micromark-util-types "^1.0.1"
     uvu "^0.5.0"
 
-micromatch@^4.0.4, micromatch@^4.0.5:
+micromatch@^4.0.4:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.5.tgz#bc8999a7cbbf77cdc89f132f6e467051b49090c6"
   integrity sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==
@@ -6039,11 +5983,6 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==
-
-typanion@^3.8.0, typanion@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/typanion/-/typanion-3.9.0.tgz#071a31a0f81c3c31226e190d0a6513ff1c8ae1a3"
-  integrity sha512-7yPk67IIquhKQcUXOBM27vDuGmZf6oJbEmzgVfDniHCkT6+z4JnKY85nKqbstoec8Kp7hD06TP3Kc98ij43PIg==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
