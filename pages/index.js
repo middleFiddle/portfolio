@@ -53,8 +53,8 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar></Navbar>
-      <div className="flex justify-around content-center p-16 align">
-        <section id="intro" className="flex-col max-w-xl m-auto">
+      <div className="flex flex-col justify-center p-16 gap-8 gutter">
+        <section id="intro" className="max-w-md mx-auto">
           <TitleCard></TitleCard>
           <div
             id="text-box"
@@ -65,7 +65,10 @@ export default function Home({ posts }) {
           <CallToAction></CallToAction>
         </section>
 
-        <section className="max-w-xl m-auto" id="Projects">
+        <section className="max-w-md mx-auto snap-start" id="projects">
+          <h1 className="text-rose-300 font-mono text-4xl font-thin tracking-wide">
+            Projects
+          </h1>
           <ProjectCard readMe={readMe("Atlanta Violins Project")}></ProjectCard>
         </section>
       </div>

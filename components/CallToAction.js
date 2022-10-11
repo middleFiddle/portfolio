@@ -2,18 +2,18 @@ import React from "react"
 
 const CallToAction = () => {
   return (
-    <div
-      className="transition easy-in-out hover:cursor-pointer max-w-sm border bg-indigo-400 hover:bg-indigo-500 hover:border-sky-200 p-1 text-justify rounded-md border-sky-300 group"
+    <button
+      className="max-w-md mx-auto transition-all duration-1000 easy-in-out hover:cursor-pointer border hover:bg-indigo-400 hover:bg-opacity-40 hover:border-slate-400 rounded-md border-slate-500 group flex flex-col justify-center text-center p-1 h-40 bg-opacity-25 bg-indigo-400 "
       id="contact"
     >
-      <h2 className="text-rose-200 group-hover:text-red-300 italic text-3xl font-semibold font-serif">
+      <h6 className="transition-all duration-1000 easy-in-out text-emerald-200 text-lg italic font-serif tracking-tightest group-hover:text-emerald-300 leading-snug ">
+        If you are seeking to hire someone with a collaborative mindset, strong
+        web development fundamentals, who is driven by genuine curiosity, please
+      </h6>
+      <h2 className="transition-all duration-1000 easy-in-out text-rose-300 group-hover:text-rose-400 gourp-hover:text-opacity-75 group-hover:text-4xl group-hover:underline decoration-indigo-500 group-hover:decoration-yellow-200 group-hover:decoration-opacity-25 italic text-3xl font-semibold font-serif pt-2">
         Recruit me!
       </h2>
-      <h6 className="text-emerald-100 text-lg italic tracking-tight group-hover:text-emerald-200 p-1">
-        If you are seeking a candidate with a collaborative mindset, strong web
-        fundamentals, and a curious mind, please reach out.
-      </h6>
-    </div>
+    </button>
   )
 }
 

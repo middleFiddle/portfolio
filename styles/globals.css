@@ -9,13 +9,19 @@
   li {
     @apply pb-4;
   }
+  li > a {
+    @apply block;
+    @apply underline;
+    @apply decoration-yellow-200;
+    @apply sm:decoration-slate-800;
+    @apply sm:hover:decoration-yellow-200;
+  }
 }
 
 @tailwind components;
 @tailwind utilities;
 
 h1 {
-  white-space: nowrap;
   margin: 0.5rem 0;
 }
 
@@ -41,9 +47,5 @@ h4 {
 }
 
 #navbar a {
-  display: block;
-}
-
-#navbar a:hover {
-  color: deepskyblue;
+  display: inline-block;
 }
