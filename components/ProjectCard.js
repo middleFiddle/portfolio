@@ -1,24 +1,32 @@
 import Image from "next/image"
-import React from "react"
-import IconLink from "./IconLink"
-import TextBox from "./TextBox"
 
-const ProjectCard = ({ readMe }) => {
+const ProjectCard = ({ id }) => {
   return (
-    <div className="bg-indigo-50 bg-opacity-75 p-2  rounded-sm">
-      <div className=" p-2 pb-0 bg-pink-50 ">
-        <Image
-          src="/atlVlns.jpg"
-          height={601}
-          width={801}
-          layout="responsive"
-          alt="Picture This"
-        ></Image>
+    <div
+      id={id}
+      className="carousel-item w-full card card-bordered border-b-sky-300 border-l-indigo-400 border-opacity-50 border-l-1 border-t-0 border bg-slate-800 bg-opacity-50 text-sky-200 min-w-lg max-w-xl rounded-md"
+    >
+      <Image
+        src="/atlVlns.jpg"
+        height={601}
+        width={801}
+        layout="responsive"
+        alt="Picture This"
+      ></Image>
+      <div className="card-body ">
+        <h2 className="card-title text-emerald-300 text-opacity-90 font-normal ">
+          Atlanta Violins
+        </h2>
+        <p>
+          This is a full stack app built using Typescript, React, and MySQL with
+          NextJS.
+        </p>
+        <div className="card-actions justify-end">
+          <button className="btn btn-outline bg-slate-700 text-rose-300">
+            See a live demo
+          </button>
+        </div>
       </div>
-      <div className="p-2 bg-pink-50 bg-opacity-75 ">
-        <TextBox readMe={readMe}></TextBox>
-      </div>
-      <IconLink></IconLink>
     </div>
   )
 }
