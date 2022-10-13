@@ -5,18 +5,18 @@ const Navbar = () => {
     <section id="navbar" className="bg-slate-800 text-sky-200">
       <ul className="flex flex-wrap list-none justify-center items-center  gap-4 font-mono tracking-tighter">
         <li className="basis-[100%] text-center">
-          <h1 className="text-emerald-200 hover:text-rose-300 text-2xl font-sans p-0 font-thin tracking-wide">
+          <h1 className="text-emerald-300 hover:text-rose-300 text-2xl font-sans p-0 font-thin tracking-wide text-opacity-90">
             <Link href="/">Ryan Gregory</Link>
           </h1>
         </li>
         <li>
-          <a href="#projects">Projects</a>
+          <Link href="/projects">Projects</Link>
         </li>
+        {/*         <li>
+          <Link href="/about">About</Link>
+        </li> */}
         <li>
-          <a href="#about">About</a>
-        </li>
-        <li>
-          <a href="#contact">Contact</a>
+          <Link href="/contact">Contact</Link>
         </li>
         <li>
           <a href="https://www.linkedin.com/in/ryanwilliamgregory/">LinkedIn</a>

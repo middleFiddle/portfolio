@@ -49,12 +49,15 @@ export default function Home(
 
   return (
     <div>
-      <div className="flex flex-col justify-center p-16 gap-8 gutter">
-        <section id="intro" className="max-w-md mx-auto">
+      <div className="mt-16">
+        <section
+          id="intro"
+          className="flex-col justify-center max-w-md mx-auto items-center space-y-4"
+        >
           <TitleCard></TitleCard>
           <div
             id="text-box"
-            className="font-serif text-lg leading-relaxed tracking-widest opacity-100 text-indigo-50"
+            className="font-serif text-lg leading-relaxed tracking-widest text-indigo-50"
           >
             <p>
               I{"\u0027"}m a web developer from Atlanta 🍑. I focus on enabling
@@ -71,17 +74,6 @@ export default function Home(
             </p>
           </div>
           <CallToAction></CallToAction>
-        </section>
-
-        <section className="max-w-md mx-auto snap-start" id="projects">
-          <h1 className="text-rose-300 font-mono text-4xl font-thin tracking-wide">
-            Projects
-          </h1>
-          <ProjectCard
-            readMe={
-              "This project began as a replacement for a static landing page is currently being developed into a full-stack application. Built with React and Tailwind in Next.js with Prisma, MySQL through Planetscale, and S3."
-            }
-          ></ProjectCard>
         </section>
       </div>
       {/*       <footer className={styles.footer}>
