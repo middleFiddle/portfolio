@@ -9,18 +9,39 @@ const ContactForm = () => {
     formState: { errors },
   } = useForm()
 
+  const mailText = "Thank you sincereley for taking the time to contact me.  If you think I may be a good candidate for your team let's do stay in touch."
   const sendIntro = (data) => {
     console.log("Sending", data)
+    fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        text: mailText,
+        pronouns: data.gender,
+        attachments: data.format
+      }),
+    }).then((res) => {
+      console.log("Fetch: ", res);
+      res.status === 200
+        ?
+        console.log("/success")
+        : console.log("/error");
+    },
+    )
   }
-
   const showError = (err) => {
     console.log("oops", err)
   }
 
   return (
-    <div className="container mx-auto min-w-lg max-w-lg mt-16 p-4 bg-purple-900 bg-opacity-10">
+    <div id="contact-form" className="container mx-auto min-w-lg max-w-lg mt-16 p-4 bg-purple-900 bg-opacity-10 text-sky-200">
       <form
-        className="form-control flex-col space-y-4"
+        className="form-control flex-col space-y-4 shadow-lg"
         onSubmit={handleSubmit(sendIntro, showError)}
       >
         <label className="label">
@@ -174,7 +195,7 @@ const ContactForm = () => {
         )}
         <div {...register("format")} className="btn-group space-x-2">
           <label className="label cursor-pointer flex space-x-4">
-            <span className="label-text">.DOC</span>
+            <span className="label-text text-sky-200">.DOC</span>
             <input
               {...register("format")}
               value=".doc"
@@ -184,7 +205,7 @@ const ContactForm = () => {
           </label>
 
           <label className="label cursor-pointer flex space-x-4">
-            <span className="label-text">.PDF</span>
+            <span className="label-text text-sky-200">.PDF</span>
             <input
               {...register("format", { required: true })}
               value=".pdf"
