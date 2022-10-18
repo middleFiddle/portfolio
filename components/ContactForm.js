@@ -9,7 +9,8 @@ const ContactForm = () => {
     formState: { errors },
   } = useForm()
 
-  const mailText = "Thank you sincereley for taking the time to contact me.  If you think I may be a good candidate for your team let's do stay in touch."
+  const mailText =
+    "Thank you sincereley for taking the time to contact me.  If you think I may be a good candidate for your team let's do stay in touch."
   const sendIntro = (data) => {
     console.log("Sending", data)
     fetch("/api/contact", {
@@ -23,23 +24,22 @@ const ContactForm = () => {
         email: data.email,
         text: mailText,
         pronouns: data.gender,
-        attachments: data.format
+        attachments: data.format,
       }),
     }).then((res) => {
-      console.log("Fetch: ", res);
-      res.status === 200
-        ?
-        console.log("/success")
-        : console.log("/error");
-    },
-    )
+      console.log("Fetch: ", res)
+      res.status === 200 ? console.log("/success") : console.log("/error")
+    })
   }
   const showError = (err) => {
     console.log("oops", err)
   }
 
   return (
-    <div id="contact-form" className="container mx-auto min-w-lg max-w-lg mt-16 p-4 bg-purple-900 bg-opacity-10 text-sky-200">
+    <div
+      id="contact-form"
+      className="container mx-auto min-w-lg max-w-lg mt-16 p-4 bg-purple-900 bg-opacity-10 text-sky-200"
+    >
       <form
         className="form-control flex-col space-y-4 shadow-lg"
         onSubmit={handleSubmit(sendIntro, showError)}
@@ -50,21 +50,23 @@ const ContactForm = () => {
         {errors.name?.type === "required" && (
           <div
             role="alert"
-            className="alert alert-error w-fit h-fit text-sm py-1 justify-center text-indigo-800 font-mono "
+            className="alert alert-error text-sm py-1 text-indigo-800 font-mono justify-center max-w-fit flex-nowrap"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="stroke-current flex-shrink-0 h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+            <div className="h-4 w-4 flex-shrink-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
             <span>My name is Ryan! What{"\u0027"}s yours?</span>
           </div>
         )}
