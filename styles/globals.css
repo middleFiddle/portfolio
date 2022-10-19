@@ -16,6 +16,9 @@
     @apply sm:decoration-slate-800;
     @apply sm:hover:decoration-yellow-200;
   }
+  #contact-form form > label > .label-text {
+    @apply text-sky-200;
+  }
 }
 
 @tailwind components;

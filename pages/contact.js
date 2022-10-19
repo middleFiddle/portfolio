@@ -2,9 +2,9 @@ import React from "react"
 import ContactForm from "../components/ContactForm"
 
 const contact = () => {
-  return (
-    <div>
-      <div className="container max-w-md mx-auto alert alert-warning bg-opacity-90 mt-16">
+    return (
+        <div>
+            {/*       <div className="container max-w-md mx-auto alert alert-warning bg-opacity-90 mt-16">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,10 +21,10 @@ const contact = () => {
           </svg>
           <span>FORM SUBMIT COMING SOON!</span>
         </div>
-      </div>
-      <ContactForm></ContactForm>
-    </div>
-  )
+      </div> */}
+            <ContactForm></ContactForm>
+        </div>
+    )
 }
 
 export default contact
