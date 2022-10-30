@@ -54,5 +54,5 @@ export default function Contact(req, res) {
         if (err) console.log(err)
         else console.log(info)
     })
-    res.status(200)
+    res.status(250).send("Success!")
 }
