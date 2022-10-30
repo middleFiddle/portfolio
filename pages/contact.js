@@ -22,6 +22,7 @@ const contact = () => {
           <span>FORM SUBMIT COMING SOON!</span>
         </div>
       </div> */}
+
             <ContactForm></ContactForm>
         </div>
     )

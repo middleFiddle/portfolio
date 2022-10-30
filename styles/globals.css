@@ -1,54 +1,57 @@
 @tailwind base;
 
 @layer base {
-  ul {
-    @apply list-disc;
-    @apply list-inside;
-    @apply pb-4;
-  }
-  li {
-    @apply pb-4;
-  }
-  li > a {
-    @apply block;
-    @apply underline;
-    @apply decoration-yellow-200;
-    @apply sm:decoration-slate-800;
-    @apply sm:hover:decoration-yellow-200;
-  }
-  #contact-form form > label > .label-text {
-    @apply text-sky-200;
-  }
+    ul {
+        @apply list-disc;
+        @apply list-inside;
+        @apply pb-4;
+    }
+    li {
+        @apply pb-4;
+    }
+    li > a {
+        @apply block;
+        @apply underline;
+        @apply decoration-yellow-200;
+        @apply sm:decoration-slate-800;
+        @apply sm:hover:decoration-yellow-200;
+    }
+    #contact-form form > label .label-text {
+        @apply text-green-100 text-lg font-serif tracking-wider;
+    }
+    #contact-form form > div .label-text {
+        @apply text-indigo-100;
+    }
 }
 
 @tailwind components;
 @tailwind utilities;
 
 h1 {
-  margin: 0.5rem 0;
+    margin: 0.5rem 0;
 }
 
 p {
-  padding-bottom: 1rem;
+    padding-bottom: 1rem;
 }
 
 h4 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
 }
 
 #navbar {
-  font-size: 80%;
-  margin: 0;
-  padding: 0;
+    font-size: 80%;
+    margin: 0;
+    padding: 0;
 }
 
 #navbar li {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 #navbar a {
-  display: inline-block;
+    display: inline-block;
 }

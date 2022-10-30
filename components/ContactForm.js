@@ -1,6 +1,7 @@
 import { appendErrors, useForm } from "react-hook-form"
 
 import { useState } from "react"
+import { data } from "autoprefixer"
 
 const ContactForm = () => {
     const {
@@ -9,10 +10,12 @@ const ContactForm = () => {
         formState: { errors },
     } = useForm()
 
-    const mailText =
-        "Thank you sincereley for taking the time to contact me.  If you think I may be a good candidate for your team let's do stay in touch."
+    const [success, setSuccess] = useState(false)
+    const [name, setName] = useState("")
 
     const sendIntro = (data) => {
+        const mailText =
+            "Thank you sincerely for taking the time to contact me.  If you think I may be a good candidate for your team let's do stay in touch."
         console.log("Sending", data)
         fetch("/api/contact", {
             method: "POST",
@@ -29,7 +32,9 @@ const ContactForm = () => {
             }),
         }).then((res) => {
             console.log("Fetch: ", res)
-            res.status === 200 ? console.log("/success") : console.log("/error")
+            res.ok
+                ? (setSuccess(true), setName(data.name))
+                : console.log("/error")
         })
     }
     const showError = (err) => {
@@ -39,10 +44,34 @@ const ContactForm = () => {
     return (
         <div
             id="contact-form"
-            className="container mx-auto min-w-lg max-w-lg mt-16 p-4 bg-purple-900 bg-opacity-10 text-sky-200"
+            className="container mx-auto min-w-lg max-w-lg mt-16 p-4 bg-purple-900 bg-opacity-10  shadow-2xl"
         >
+            {success && (
+                <div className="alert alert-success shadow-lg">
+                    <div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="stroke-current flex-shrink-0 h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                        <span>
+                            Thank you for your interest, {name}! You should
+                            receive my resume in your inbox shortly. I look
+                            forward to connecting with you!
+                        </span>
+                    </div>
+                </div>
+            )}
             <form
-                className="form-control flex-col space-y-4 shadow-lg"
+                className="form-control flex-col space-y-4"
                 onSubmit={handleSubmit(sendIntro, showError)}
             >
                 <label className="label">
@@ -111,7 +140,7 @@ const ContactForm = () => {
                     className="input-group"
                 >
                     <label className="label cursor-pointer">
-                        <span className="label-text">She/Her</span>
+                        <span className="label-text ">She/Her</span>
                         <input
                             {...register("gender")}
                             value="she"
@@ -201,7 +230,7 @@ const ContactForm = () => {
                 )}
                 <div {...register("format")} className="btn-group space-x-2">
                     <label className="label cursor-pointer flex space-x-4">
-                        <span className="label-text text-sky-200">.DOCX</span>
+                        <span className="label-text ">.DOCX</span>
                         <input
                             {...register("format")}
                             value=".docx"
@@ -211,7 +240,7 @@ const ContactForm = () => {
                     </label>
 
                     <label className="label cursor-pointer flex space-x-4">
-                        <span className="label-text text-sky-200">.PDF</span>
+                        <span className="label-text ">.PDF</span>
                         <input
                             {...register("format", { required: true })}
                             value=".pdf"
@@ -220,7 +249,11 @@ const ContactForm = () => {
                         />
                     </label>
                 </div>
-                <input className="btn" type="submit" value="fire away!" />
+                <input
+                    className="btn mx-auto"
+                    type="submit"
+                    value="Let's connect!"
+                />
             </form>
         </div>
     )

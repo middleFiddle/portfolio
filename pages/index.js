@@ -29,11 +29,11 @@ export async function getStaticProps() {
 ] */
 
 export default function Home(
-  {
-    /*posts*/
-  }
+    {
+        /*posts*/
+    }
 ) {
-  /*   const getText = (t) => {
+    /*   const getText = (t) => {
     return posts.find((p) => p.title == t)
   }
 
@@ -47,36 +47,40 @@ export default function Home(
     )
   } */
 
-  return (
-    <div>
-      <div className="mt-16">
-        <section
-          id="intro"
-          className="flex-col justify-center max-w-md mx-auto items-center space-y-4"
-        >
-          <TitleCard></TitleCard>
-          <div
-            id="text-box"
-            className="font-serif text-lg leading-relaxed tracking-widest text-indigo-50"
-          >
-            <p>
-              I{"\u0027"}m a web developer from Atlanta 🍑. I focus on enabling
-              contractors, artists, and small businesses to expand their
-              capacity to serve clients and customers, while reducing the burden
-              of repetitive tasks that can create bottlenecks, especially for
-              self-employed people.
-            </p>
-            <p>
-              My strongest stack is full stack Typescript development with React
-              and Tailwind CSS on the front end, MySQL and Prisma handling data,
-              with routing, API endpoints, and fine-grained control over
-              server/client rendering with Next.js
-            </p>
-          </div>
-          <CallToAction></CallToAction>
-        </section>
-      </div>
-      {/*       <footer className={styles.footer}>
+    return (
+        <div>
+            <div className="mt-16">
+                <section
+                    id="intro"
+                    className="flex-col justify-center max-w-md mx-auto items-center space-y-4"
+                >
+                    <TitleCard></TitleCard>
+                    <div
+                        id="text-box"
+                        className="font-serif text-lg leading-relaxed tracking-widest text-indigo-50"
+                    >
+                        <p>
+                            I{"\u0027"}m a web developer from Atlanta 🍑. I
+                            focus on enabling contractors, artists, and small
+                            businesses to expand their capacity to serve clients
+                            and customers, while reducing the burden of
+                            repetitive tasks that can create bottlenecks,
+                            especially for self-employed people.
+                        </p>
+                        <p>
+                            My strongest stack is full stack Typescript
+                            development with React and Tailwind CSS on the front
+                            end, MySQL and Prisma handling data, with routing,
+                            API endpoints, and fine-grained control over
+                            server/client rendering with Next.js
+                        </p>
+                    </div>
+                    <div className="shadow-inner ">
+                        <CallToAction></CallToAction>
+                    </div>
+                </section>
+            </div>
+            {/*       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -88,6 +92,6 @@ export default function Home(
           </span>
         </a>
       </footer> */}
-    </div>
-  )
+        </div>
+    )
 }
