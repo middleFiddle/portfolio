@@ -1,9 +1,9 @@
 import nodemailer from "nodemailer"
 import path from "path"
 
-export default function Contact(req, res) {
+export default async function Contact(req, res) {
     console.log(req.body)
-    const { name, email, text, prounouns, attachments } = req.body
+    const { name, email, text, prounouns, attachments } = await req.body
 
     const transporter = nodemailer.createTransport({
         port: 465,
@@ -34,7 +34,7 @@ export default function Contact(req, res) {
     }
 
     const mailData = {
-        from: "ryan@middlefiddle.dev",
+        from: "RyanGregory@middlefiddle.dev",
         to: `${email}`,
         subject: `Message From MiddleFiddle.dev`,
         text: `${text}`,
