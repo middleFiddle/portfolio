@@ -1,8 +1,7 @@
 import nodemailer from "nodemailer"
 import path from "path"
 
-export default function Contact(req, res) {
-    console.log(req.body)
+export default async function Contact(req, res) {
     const { name, email, text, prounouns, attachments } = req.body
 
     const transporter = nodemailer.createTransport({
@@ -14,7 +13,7 @@ export default function Contact(req, res) {
         },
         secure: true,
         tls: {
-            rejectUnauthorized: false,
+            rejectUnauthorized: true,
         },
     })
 
@@ -34,12 +33,12 @@ export default function Contact(req, res) {
     }
 
     const mailData = {
-        from: "ryan@middlefiddle.dev",
+        from: "RyanGregory@middlefiddle.dev",
         to: `${email}`,
         subject: `Message From MiddleFiddle.dev`,
         text: `${text}`,
         html: `<div>${text}</div>`,
-        attachments: attachThis(attachments),
+        attachments: attachments ? attachThis(attachments) : null,
     }
     // verify connection configuration
     transporter.verify(function (error, success) {
@@ -54,5 +53,6 @@ export default function Contact(req, res) {
         if (err) console.log(err)
         else console.log(info)
     })
-    res.status(250).send("Success!")
+
+    return res.status(200).json({ json: "data" })
 }
