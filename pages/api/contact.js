@@ -2,8 +2,7 @@ import nodemailer from "nodemailer"
 import path from "path"
 
 export default async function Contact(req, res) {
-    console.log(req.body)
-    const { name, email, text, prounouns, attachments } = await req.body
+    const { name, email, text, prounouns, attachments } = req.body
 
     const transporter = nodemailer.createTransport({
         port: 465,
@@ -39,7 +38,7 @@ export default async function Contact(req, res) {
         subject: `Message From MiddleFiddle.dev`,
         text: `${text}`,
         html: `<div>${text}</div>`,
-        attachments: attachThis(attachments),
+        attachments: attachments ? attachThis(attachments) : null,
     }
     // verify connection configuration
     transporter.verify(function (error, success) {
@@ -54,5 +53,6 @@ export default async function Contact(req, res) {
         if (err) console.log(err)
         else console.log(info)
     })
-    res.status(250).send("Success!")
+
+    return res.status(200).json({ json: "data" })
 }
