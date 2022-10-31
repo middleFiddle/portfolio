@@ -14,7 +14,7 @@ export default function Contact(req, res) {
         },
         secure: true,
         tls: {
-            rejectUnauthorized: false,
+            rejectUnauthorized: true,
         },
     })
 
