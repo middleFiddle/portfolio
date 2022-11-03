@@ -1,17 +1,20 @@
-import SESTransport from "nodemailer/lib/ses-transport"
-
 import nodemailer from "nodemailer"
+let aws = require("@aws-sdk/client-ses")
 import path from "path"
+let { defaultProvider } = require("@aws-sdk/credential-provider-node")
 
 export default async function Contact(req, res) {
     const { name, email, text, prounouns, attachments } = req.body
 
-    const sesTransport = new SESTransport({
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    const ses = new aws.SES({
+        apiVersion: "2010-12-01",
+        region: "us-east-1",
+        defaultProvider,
     })
 
-    const transporter = nodemailer.createTransport(sesTransport)
+    const transporter = nodemailer.createTransport({
+        SES: { ses, aws },
+    })
 
     //return array of attachment objects based on selected format = (
     const attachThis = (attachments) => {
