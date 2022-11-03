@@ -12,10 +12,10 @@ const ContactForm = () => {
 
     const [success, setSuccess] = useState(false)
     const [name, setName] = useState("")
+    const mailText =
+        "Thank you sincerely for taking the time to contact me.  If you think I may be a good candidate for your team let's do stay in touch."
 
     const sendIntro = async (data) => {
-        const mailText =
-            "Thank you sincerely for taking the time to contact me.  If you think I may be a good candidate for your team let's do stay in touch."
         console.log("Sending", data)
         await fetch("/api/contact", {
             method: "POST",

@@ -1,21 +1,17 @@
+import SESTransport from "nodemailer/lib/ses-transport"
+
 import nodemailer from "nodemailer"
 import path from "path"
 
 export default async function Contact(req, res) {
     const { name, email, text, prounouns, attachments } = req.body
 
-    const transporter = nodemailer.createTransport({
-        port: 465,
-        host: "email-smtp.us-east-1.amazonaws.com",
-        auth: {
-            user: process.env.SES_USER,
-            pass: process.env.SES_PASS,
-        },
-        secure: true,
-        tls: {
-            rejectUnauthorized: true,
-        },
+    const sesTransport = new SESTransport({
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     })
+
+    const transporter = nodemailer.createTransport(sesTransport)
 
     //return array of attachment objects based on selected format = (
     const attachThis = (attachments) => {
@@ -26,7 +22,7 @@ export default async function Contact(req, res) {
                     __dirname,
                     `../../../../public/RyanGregory_DevResume${f}`
                 ),
-                contentType: "application/pdf",
+                contentType: `application/${f.substring(1)}`,
             }
         })
         return att
@@ -38,7 +34,7 @@ export default async function Contact(req, res) {
         subject: `Message From MiddleFiddle.dev`,
         text: `${text}`,
         html: `<div>${text}</div>`,
-        attachments: attachments ? attachThis(attachments) : null,
+        attachments: attachThis(attachments),
     }
     // verify connection configuration
     transporter.verify(function (error, success) {
