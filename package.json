@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.200.0",
+    "@aws-sdk/credential-provider-node": "^3.200.0",
+    "aws-sdk": "^2.1245.0",
     "daisyui": "^2.31.0",
     "next": "12.2.5",
     "nodemailer": "^6.8.0",
+    "nodemailer-ses-transport": "^1.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.37.0",
