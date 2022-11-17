@@ -18,17 +18,20 @@ export default async function Contact(req, res) {
 
     //return array of attachment objects based on selected format = (
     const attachThis = (attachments) => {
-        const att = attachments.map((f) => {
-            return {
-                filename: `RyanGregory_DevResume${f}`,
-                path: path.join(
-                    __dirname,
-                    `../../../../public/RyanGregory_DevResume${f}`
-                ),
-                contentType: `application/${f.substring(1)}`,
-            }
-        })
-        return att
+        if (typeof attachments === "object") {
+            const att = attachments.map((f) => {
+                return {
+                    filename: `RyanGregory_DevResume${f}`,
+                    path: path.join(
+                        __dirname,
+                        `../../../../public/RyanGregory_DevResume${f}`
+                    ),
+                    contentType: `application/${f.substring(1)}`,
+                }
+            })
+            return att
+        }
+        return []
     }
 
     const mailData = {
@@ -49,9 +52,12 @@ export default async function Contact(req, res) {
     })
 
     transporter.sendMail(mailData, function (err, info) {
-        if (err) console.log(err)
-        else console.log(info)
+        if (err) {
+            console.log(err.message)
+        } else {
+            console.log(info.response)
+        }
     })
 
-    return res.status(200).json({ json: "data" })
+    return res.json()
 }
