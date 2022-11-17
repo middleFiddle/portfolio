@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer"
 let aws = require("@aws-sdk/client-ses")
 import path from "path"
+import getConfig from "next/config"
 
 let { defaultProvider } = require("@aws-sdk/credential-provider-node")
 
@@ -24,8 +25,8 @@ export default async function Contact(req, res) {
                 return {
                     filename: `RyanGregory_DevResume${f}`,
                     path: path.join(
-                        __dirname,
-                        `../../../../public/RyanGregory_DevResume${f}`
+                        getConfig().serverRuntimeConfig.PROJECT_ROOT,
+                        `/public/RyanGregory_DevResume${f}`
                     ),
                     contentType: `application/${f.substring(1)}`,
                 }
