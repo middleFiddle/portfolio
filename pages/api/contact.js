@@ -54,11 +54,11 @@ export default async function Contact(req, res) {
 
     transporter.sendMail(mailData, function (err, info) {
         if (err) {
-            console.log("error yo")
+            console.log(err)
         } else {
-            console.log("success, mr. bupkiss")
+            console.log(info)
         }
     })
     console.log(res.req.body)
-    return res.json()
+    return res.send()
 }
