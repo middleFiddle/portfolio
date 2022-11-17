@@ -1,11 +1,37 @@
+import { NextApiRequest, NextApiResponse } from "next"
 import nodemailer from "nodemailer"
+
 let aws = require("@aws-sdk/client-ses")
 import path from "path"
-import getConfig from "next/config"
 
 let { defaultProvider } = require("@aws-sdk/credential-provider-node")
 
-export default async function Contact(req, res) {
+import Cors from "cors"
+
+const cors = Cors({
+    methods: ["POST", "GET", "HEAD"],
+})
+
+function runMiddleware(
+    req: NextApiRequest,
+    res: NextApiResponse,
+    fn: Function
+) {
+    return new Promise((resolve, reject) => {
+        fn(req, res, (result: any) => {
+            if (result instanceof Error) {
+                return reject(result)
+            }
+            return resolve(result)
+        })
+    })
+}
+
+export default async function Contact(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
+    await runMiddleware(req, res, cors)
     const { name, email, text, prounouns, attachments } = req.body
 
     const ses = new aws.SES({
@@ -21,17 +47,17 @@ export default async function Contact(req, res) {
     //return array of attachment objects based on selected format = (
     const attachThis = (attachments) => {
         if (typeof attachments === "object") {
-            const att = attachments.map((f) => {
+            const _att = attachments.map((f) => {
                 return {
                     filename: `RyanGregory_DevResume${f}`,
                     path: path.join(
-                        getConfig().serverRuntimeConfig.PROJECT_ROOT,
-                        `/public/RyanGregory_DevResume${f}`
+                        __dirname,
+                        `../../../../public/RyanGregory_DevResume${f}`
                     ),
                     contentType: `application/${f.substring(1)}`,
                 }
             })
-            return att
+            return _att
         }
         return []
     }
@@ -60,6 +86,6 @@ export default async function Contact(req, res) {
             console.log(info)
         }
     })
-    console.log(res.req.body)
-    return res.send()
+    console.log(mailData, res)
+    return res.send(mailData)
 }
