@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer"
 let aws = require("@aws-sdk/client-ses")
 import path from "path"
+
 let { defaultProvider } = require("@aws-sdk/credential-provider-node")
 
 export default async function Contact(req, res) {
@@ -53,11 +54,11 @@ export default async function Contact(req, res) {
 
     transporter.sendMail(mailData, function (err, info) {
         if (err) {
-            console.log(err.message)
+            console.log("error yo")
         } else {
-            console.log(info.response)
+            console.log("success, mr. bupkiss")
         }
     })
-
+    console.log(res.req.body)
     return res.json()
 }
