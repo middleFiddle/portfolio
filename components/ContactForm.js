@@ -17,7 +17,7 @@ const ContactForm = () => {
 
     const sendIntro = async (data) => {
         console.log("Sending", data)
-        await fetch("/api/contact", {
+        const response = await fetch("/api/contact", {
             method: "POST",
             headers: {
                 Accept: "application/json, text/plain, */*",
@@ -30,12 +30,13 @@ const ContactForm = () => {
                 pronouns: data.gender,
                 attachments: data.format,
             }),
-        }).then((res) => {
-            console.log("Fetch: ", res)
-            res.ok
-                ? (setSuccess(true), setName(data.name))
-                : console.log("/error")
         })
+        console.log(response)
+        if (response.status === 200) {
+            setName(data.name)
+            setSuccess(true)
+        }
+        return response
     }
     const showError = (err) => {
         console.log("oops", err)
