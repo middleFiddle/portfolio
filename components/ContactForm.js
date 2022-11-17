@@ -31,7 +31,7 @@ const ContactForm = () => {
                 attachments: data.format,
             }),
         })
-        console.log(response)
+        console.log("Receiving", response)
         if (response.status === 200) {
             setName(data.name)
             setSuccess(true)

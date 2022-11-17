@@ -1,12 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import nodemailer from "nodemailer"
-
+import fs from "fs"
 let aws = require("@aws-sdk/client-ses")
 import path from "path"
 
 let { defaultProvider } = require("@aws-sdk/credential-provider-node")
 
 import Cors from "cors"
+import { ReadStream } from "fs"
 
 const cors = Cors({
     methods: ["POST", "GET", "HEAD"],
@@ -71,21 +72,30 @@ export default async function Contact(
         attachments: attachThis(attachments),
     }
     // verify connection configuration
-    transporter.verify(function (error, success) {
+    let confirm = await transporter.verify(function (error, success) {
         if (error) {
-            console.log(error)
+            console.log("server isn't ready for this")
         } else {
             console.log("Server is ready to take our messages")
+            return success
         }
     })
 
     transporter.sendMail(mailData, function (err, info) {
         if (err) {
-            console.log(err)
+            console.log({ ...err }, 85)
+            err = {
+                name: { ...err }.message,
+                code: { ...err }.$metadata.httpStatusCode,
+            }
+            res.status(err.code).send(err.name)
         } else {
-            console.log(info)
+            console.log(98, { ...info })
+            info = {
+                name: `Sent Resume to: ${{ ...info }.envelope.to[0]}`,
+                code: 200,
+            }
+            res.status(info.code).send(info.name)
         }
     })
-    console.log(mailData, res)
-    return res.send(mailData)
 }
