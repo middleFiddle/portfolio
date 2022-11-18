@@ -33,12 +33,12 @@ const ContactForm = () => {
                 attachments: data.format,
             }),
         })
-        console.log("Receiving", response.json())
+        console.log("Receiving", response)
         if (response.status === 200) {
             setName(data.name)
             setSuccess(true)
         }
-        return response.json()
+        return response
     }
     const showError = (err) => {
         console.log("oops", err)
