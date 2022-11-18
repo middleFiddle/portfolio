@@ -19,6 +19,8 @@ const ContactForm = () => {
         console.log("Sending", data)
         const response = await fetch("/api/contact", {
             method: "POST",
+            mode: "cors",
+            credentials: "same-origin",
             headers: {
                 Accept: "application/json, text/plain, */*",
                 "Content-Type": "application/json",
@@ -31,12 +33,12 @@ const ContactForm = () => {
                 attachments: data.format,
             }),
         })
-        console.log("Receiving", response)
+        console.log("Receiving", response.json())
         if (response.status === 200) {
             setName(data.name)
             setSuccess(true)
         }
-        return response
+        return response.json()
     }
     const showError = (err) => {
         console.log("oops", err)
