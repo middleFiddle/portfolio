@@ -51,10 +51,7 @@ export default async function Contact(
             const _att = attachments.map((f) => {
                 return {
                     filename: `RyanGregory_DevResume${f}`,
-                    path: path.join(
-                        __dirname,
-                        `../../../../public/RyanGregory_DevResume${f}`
-                    ),
+                    path: `public/RyanGregory_DevResume${f}`,
                     contentType: `application/${f.substring(1)}`,
                 }
             })
