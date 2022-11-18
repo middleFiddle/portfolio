@@ -1,13 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import nodemailer from "nodemailer"
-import fs from "fs"
 let aws = require("@aws-sdk/client-ses")
-import path from "path"
 
 let { defaultProvider } = require("@aws-sdk/credential-provider-node")
 
 import Cors from "cors"
-import { ReadStream } from "fs"
 
 const cors = Cors({
     methods: ["POST", "GET", "HEAD"],
@@ -49,11 +46,20 @@ export default async function Contact(
     const attachThis = (attachments) => {
         if (typeof attachments === "object") {
             const _att = attachments.map((f) => {
-                return {
-                    filename: `RyanGregory_DevResume${f}`,
-                    path: `public/RyanGregory_DevResume${f}`,
+                const attachment = {
+                    filename: `Resume${f}`,
+                    url: "",
                     contentType: `application/${f.substring(1)}`,
                 }
+                if (f === ".docx") {
+                    attachment.url +=
+                        "https://docs.google.com/document/d/e/2PACX-1vRsXSLdAG2Bdv36mAcWic9pe5dLad7X5aMVOeTVGmklwa74vBN2khBLjqI1EAJ3-Q/pub"
+                }
+                if (f === ".pdf") {
+                    attachment.url +=
+                        "https://drive.google.com/file/d/1gDdvISavh4uYX49qx5S9s0nY7Ve2D_Hd/view?usp=share_link"
+                }
+                return attachment
             })
             return _att
         }
@@ -74,7 +80,6 @@ export default async function Contact(
             console.log("server isn't ready for this")
         } else {
             console.log("Server is ready to take our messages")
-            return success
         }
     })
 
