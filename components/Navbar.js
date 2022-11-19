@@ -19,15 +19,29 @@ const Navbar = () => {
                     <Link href="/contact">Contact</Link>
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/in/ryanwilliamgregory/">
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://www.linkedin.com/in/ryanwilliamgregory/"
+                    >
                         LinkedIn
                     </a>
                 </li>
                 <li>
-                    <a href="https://github.com/middleFiddle">Github</a>
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://github.com/middleFiddle"
+                    >
+                        Github
+                    </a>
                 </li>
                 <li>
-                    <a href="https://drive.google.com/file/d/12RxPKQTj0WyWPecX_HFIUxHHJu7a4bpX/view?usp=sharing">
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://drive.google.com/file/d/12RxPKQTj0WyWPecX_HFIUxHHJu7a4bpX/view?usp=sharing"
+                    >
                         Resume
                     </a>
                 </li>
