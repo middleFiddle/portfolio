@@ -90,14 +90,14 @@ export default async function Contact(
                 name: { ...err }.message,
                 code: { ...err }.$metadata.httpStatusCode,
             }
-            res.status(err.code).send(err.name)
+            res.status(err.code).json(err.name)
         } else {
             console.log(98, { ...info })
             info = {
                 name: `Sent Resume to: ${{ ...info }.envelope.to[0]}`,
                 code: 200,
             }
-            res.status(info.code).send(info.name)
+            res.status(info.code).json(info.name)
         }
     })
 }

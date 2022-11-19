@@ -17,7 +17,7 @@
         @apply sm:hover:decoration-yellow-200;
     }
     #contact-form form > label .label-text {
-        @apply text-green-100 text-lg font-serif tracking-wider;
+        @apply text-sky-200 text-opacity-75 text-lg font-serif tracking-wider;
     }
     #contact-form form > div .label-text {
         @apply text-indigo-100;

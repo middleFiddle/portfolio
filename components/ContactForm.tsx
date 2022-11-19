@@ -1,5 +1,5 @@
 import { appendErrors, useForm } from "react-hook-form"
-
+import Link from "next"
 import { useState } from "react"
 import { data } from "autoprefixer"
 
@@ -11,6 +11,7 @@ const ContactForm = () => {
     } = useForm()
 
     const [success, setSuccess] = useState(false)
+    const [error, setError] = useState(false)
     const [name, setName] = useState("")
     const mailText =
         "Thank you sincerely for taking the time to contact me.  If you think I may be a good candidate for your team let's do stay in touch."
@@ -37,6 +38,9 @@ const ContactForm = () => {
         if (response.status === 200) {
             setName(data.name)
             setSuccess(true)
+        } else {
+            setName(data.name)
+            setError(true)
         }
         return response
     }
@@ -47,32 +51,8 @@ const ContactForm = () => {
     return (
         <div
             id="contact-form"
-            className="container mx-auto min-w-lg max-w-lg mt-16 p-4 bg-purple-900 bg-opacity-10  shadow-2xl"
+            className="container mx-auto min-w-lg max-w-lg mt-16 p-4 bg-purple-900 bg-opacity-10 shadow-2xl"
         >
-            {success && (
-                <div className="alert alert-success shadow-lg">
-                    <div>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="stroke-current flex-shrink-0 h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
-                        <span>
-                            Thank you for your interest, {name}! You should
-                            receive my resume in your inbox shortly. I look
-                            forward to connecting with you!
-                        </span>
-                    </div>
-                </div>
-            )}
             <form
                 className="form-control flex-col space-y-4"
                 onSubmit={handleSubmit(sendIntro, showError)}
@@ -258,6 +238,75 @@ const ContactForm = () => {
                     value="Let's connect!"
                 />
             </form>
+            {success && (
+                <div className="alert alert-success shadow-lg">
+                    <div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="stroke-current flex-shrink-0 h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                        <span>
+                            Thank you for your interest,{" "}
+                            <span className="text-purple-800 font-semibold">
+                                {name}
+                            </span>
+                            ! You should receive my resume in your inbox
+                            shortly. I look forward to connecting with you!
+                        </span>
+                    </div>
+                </div>
+            )}
+            {error && (
+                <div className="alert alert-error shadow-lg bg-opacity-75">
+                    <div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="stroke-current flex-shrink-0 h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                        <span>
+                            Sorry,
+                            <span className="text-purple-800 font-semibold">
+                                {" "}
+                                {name}
+                            </span>
+                            {name}! Something isn{"\u0027"}t working quite right
+                            in the land of serverless! Click{" "}
+                            <a
+                                className="text-amber-100 hover:underline"
+                                href="https://drive.google.com/file/d/1gDdvISavh4uYX49qx5S9s0nY7Ve2D_Hd/view?usp=share_link"
+                            >
+                                here for my resume
+                            </a>{" "}
+                            and drop me a line at{" "}
+                            <a
+                                className="text-amber-100 hover:underline"
+                                href="mailto:ryan.middleFiddle@gmail.com"
+                            >
+                                ryan.middleFiddle@gmail.com
+                            </a>{" "}
+                            I look forward to connecting with you!
+                        </span>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
