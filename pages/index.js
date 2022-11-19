@@ -57,7 +57,7 @@ export default function Home(
                     <TitleCard></TitleCard>
                     <div
                         id="text-box"
-                        className="font-serif text-lg leading-relaxed tracking-widest text-indigo-50"
+                        className="font-serif text-lg leading-relaxed tracking-widest text-indigo-100 text-opacity-90 bg-gradient-to-b mb-2 rounded-md shadow-slate-800 p-1 from-slate-900  bg-slate-800 shadow-lg bg-opacity-80"
                     >
                         <p>
                             I{"\u0027"}m a web developer from Atlanta 🍑. I
@@ -67,12 +67,12 @@ export default function Home(
                             repetitive tasks that can create bottlenecks,
                             especially for self-employed people.
                         </p>
-                        <p>
+                        <p className="p-0">
                             My strongest stack is full stack Typescript
                             development with React and Tailwind CSS on the front
                             end, MySQL and Prisma handling data, with routing,
                             API endpoints, and fine-grained control over
-                            server/client rendering with Next.js
+                            server/client rendering with Nextjs.
                         </p>
                     </div>
                     <div className="shadow-inner ">
