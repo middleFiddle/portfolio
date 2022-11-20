@@ -287,11 +287,13 @@ const ContactForm = () => {
                                 {" "}
                                 {name}
                             </span>
-                            {name}! Something isn{"\u0027"}t working quite right
-                            in the land of serverless! Click{" "}
+                            ! Something isn{"\u0027"}t working quite right in
+                            the land of serverless! Click{" "}
                             <a
-                                className="text-amber-100 hover:underline"
+                                className="text-sky-400 hover:underline"
                                 href="https://drive.google.com/file/d/1gDdvISavh4uYX49qx5S9s0nY7Ve2D_Hd/view?usp=share_link"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 here for my resume
                             </a>{" "}
@@ -299,6 +301,8 @@ const ContactForm = () => {
                             <a
                                 className="text-amber-100 hover:underline"
                                 href="mailto:ryan.middleFiddle@gmail.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 ryan.middleFiddle@gmail.com
                             </a>{" "}
