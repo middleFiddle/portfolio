@@ -39,6 +39,16 @@ const passGen: Project = {
         "This is simple SPA built to spec from a Figma design by frontendmentor.io.  It is built with Typescript, React, and TailwindCSS using Vite.",
 }
 
+const Pomodoro: Project = {
+    title: "Pomodoro",
+    img: {
+        src: "pomodoro.jpg"
+    },
+    url: "https://middleFiddle.github.io/pomodoro_vite",
+    gitHub: "https://github.com/middleFiddle/pomodoro_vite",
+    description: "An adjustable pomodoro timer using vitawind"
+}
+
 const projects = () => {
     const projects: Project[] = [atlVlns, passGen]
 
@@ -48,7 +58,7 @@ const projects = () => {
                 key={i}
                 id={`project${i + 1}`}
                 title={project.title}
-                img={project.img}
+                img={project.img ? project.img : }
                 url={project.url}
                 gitHub={project.gitHub}
                 description={project.description}
@@ -64,10 +74,20 @@ const projects = () => {
             <h2 className="text-rose-300 text-3xl leading-loose">Projects</h2>
             <div className="carousel ">{builtCards}</div>
             <div className="flex justify-center w-full py-2 gap-2 [overflow-anchor-none] ">
-                <a href="#project1" className="btn btn-xs">
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="#project1"
+                    className="btn btn-xs"
+                >
                     1
                 </a>
-                <a href="#project2" className="btn btn-xs">
+                <a
+                    href="#project2"
+                    className="btn btn-xs"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
                     2
                 </a>
             </div>
