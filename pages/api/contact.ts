@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import nodemailer from "nodemailer"
 let aws = require("@aws-sdk/client-ses")
+let { getDefaultRolAssumerWithWebIdentity } = require("@aws-sdk/client-sts")
 
 let { defaultProvider } = require("@aws-sdk/credential-provider-node")
 
@@ -25,6 +26,10 @@ function runMiddleware(
     })
 }
 
+const provider = defaultProvider({
+    roleAssumerWithWEbIdentitiy: getDefaultRolAssumerWithWebIdentity,
+})
+
 export default async function Contact(
     req: NextApiRequest,
     res: NextApiResponse
@@ -35,7 +40,7 @@ export default async function Contact(
     const ses = new aws.SES({
         apiVersion: "2010-12-01",
         region: "us-east-1",
-        defaultProvider,
+        provider,
     })
 
     const transporter = nodemailer.createTransport({
