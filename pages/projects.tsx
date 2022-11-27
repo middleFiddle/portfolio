@@ -42,11 +42,13 @@ const passGen: Project = {
 const Pomodoro: Project = {
     title: "Pomodoro",
     img: {
-        src: "pomodoro.jpg"
+        src: "pomo.jpg",
+        width: 935,
+        height: 862,
     },
     url: "https://middleFiddle.github.io/pomodoro_vite",
     gitHub: "https://github.com/middleFiddle/pomodoro_vite",
-    description: "An adjustable pomodoro timer using vitawind"
+    description: "An adjustable pomodoro timer using vitawind",
 }
 
 const projects = () => {
@@ -58,7 +60,7 @@ const projects = () => {
                 key={i}
                 id={`project${i + 1}`}
                 title={project.title}
-                img={project.img ? project.img : }
+                img={project.img}
                 url={project.url}
                 gitHub={project.gitHub}
                 description={project.description}
