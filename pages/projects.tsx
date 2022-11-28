@@ -76,28 +76,13 @@ const projects = () => {
             <h2 className="text-rose-300 text-3xl leading-loose">Projects</h2>
             <div className="carousel ">{builtCards}</div>
             <div className="flex justify-center w-full py-2 gap-2 [overflow-anchor-none] ">
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="#project1"
-                    className="btn btn-xs"
-                >
+                <a href="#project1" className="btn btn-xs">
                     1
                 </a>
-                <a
-                    href="#project2"
-                    className="btn btn-xs"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                >
+                <a href="#project2" className="btn btn-xs">
                     2
                 </a>
-                <a
-                    href="#project3"
-                    className="btn btn-xs"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                >
+                <a href="#project3" className="btn btn-xs">
                     3
                 </a>
             </div>
