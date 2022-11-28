@@ -5,44 +5,19 @@ let { getDefaultRoleAssumerWithWebIdentity } = require("@aws-sdk/client-sts")
 
 let { defaultProvider } = require("@aws-sdk/credential-provider-node")
 
-import Cors from "cors"
-
-const cors = Cors({
-    methods: ["POST", "GET", "HEAD"],
-})
-
-function runMiddleware(
-    req: NextApiRequest,
-    res: NextApiResponse,
-    fn: Function
-) {
-    return new Promise((resolve, reject) => {
-        fn(req, res, (result: any) => {
-            if (result instanceof Error) {
-                return reject(result)
-            }
-            return resolve(result)
-        })
-    })
-}
-
-const provider = defaultProvider({
-    roleAssumerWithWebIdentity: getDefaultRoleAssumerWithWebIdentity,
-})
-
 export default async function Contact(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    await runMiddleware(req, res, cors)
     const { email, text, attachments } = req.body
+    const provider = defaultProvider({
+        roleAssumerWithWebIdentity: getDefaultRoleAssumerWithWebIdentity,
+    })
 
     const ses = new aws.SES({
         apiVersion: "2010-12-01",
         region: "us-east-1",
-        provider,
-        key: process.env.NODEMAILER_SECRET,
-        secret: process.env.NODEMAILER_SECRET_ACCESS_KEY,
+        credentialDefaultProvider: provider,
     })
 
     const transporter = nodemailer.createTransport({
@@ -104,7 +79,7 @@ export default async function Contact(
                 name: `Sent Resume to: ${{ ...info }.envelope.to[0]}`,
                 code: 200,
             }
-            res.status(info.code).json(info.name)
+            res.status(info.code).json(info)
         }
     })
 }
