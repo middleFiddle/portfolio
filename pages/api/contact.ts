@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import nodemailer from "nodemailer"
 let aws = require("@aws-sdk/client-ses")
-let { getDefaultRolAssumerWithWebIdentity } = require("@aws-sdk/client-sts")
+let { getDefaultRoleAssumerWithWebIdentity } = require("@aws-sdk/client-sts")
 
 let { defaultProvider } = require("@aws-sdk/credential-provider-node")
 
@@ -27,7 +27,7 @@ function runMiddleware(
 }
 
 const provider = defaultProvider({
-    roleAssumerWithWEbIdentitiy: getDefaultRolAssumerWithWebIdentity,
+    roleAssumerWithWebIdentity: getDefaultRoleAssumerWithWebIdentity,
 })
 
 export default async function Contact(
