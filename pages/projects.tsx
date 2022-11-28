@@ -52,7 +52,7 @@ const Pomodoro: Project = {
 }
 
 const projects = () => {
-    const projects: Project[] = [atlVlns, passGen]
+    const projects: Project[] = [atlVlns, passGen, Pomodoro]
 
     const builtCards = projects.map((project, i) => {
         return (
@@ -91,6 +91,14 @@ const projects = () => {
                     rel="noreferrer noopener"
                 >
                     2
+                </a>
+                <a
+                    href="#project3"
+                    className="btn btn-xs"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
+                    3
                 </a>
             </div>
         </div>
