@@ -16,6 +16,8 @@ export default async function Contact(
         defaultProvider,
     })
 
+    // we need to assume the right role
+
     const transporter = nodemailer.createTransport({
         SES: { ses, aws },
     })
