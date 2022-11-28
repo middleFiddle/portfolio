@@ -41,6 +41,8 @@ export default async function Contact(
         apiVersion: "2010-12-01",
         region: "us-east-1",
         provider,
+        key: process.env.NODEMAILER_SECRET,
+        secret: process.env.NODEMAILER_SECRET_ACCESS_KEY,
     })
 
     const transporter = nodemailer.createTransport({
