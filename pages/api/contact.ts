@@ -1,3 +1,4 @@
+// THIS ROUTE CAN'T BE USED UNTIL RESERVED ENV NAMES CONFLICT CAN BE RESOLVED
 import { NextApiRequest, NextApiResponse } from "next"
 import nodemailer from "nodemailer"
 let aws = require("@aws-sdk/client-ses")
