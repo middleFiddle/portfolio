@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "postinstall": "npx patch-package"
+        "preinstall": "npx patch-package"
     },
     "dependencies": {
         "@aws-sdk/client-ses": "^3.202.0",
