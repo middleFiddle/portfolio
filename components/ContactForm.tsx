@@ -18,7 +18,7 @@ const ContactForm = () => {
 
     const sendIntro = async (data) => {
         console.log("Sending", data)
-        const response = await fetch("/api/contact", {
+        const response = await fetch("/api/smtp_contact", {
             method: "POST",
             mode: "cors",
             credentials: "same-origin",
