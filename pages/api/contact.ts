@@ -67,18 +67,10 @@ export default async function Contact(
     transporter.sendMail(mailData, function (err, info) {
         if (err) {
             console.log({ ...err }, 85)
-            err = {
-                name: { ...err }.message,
-                code: { ...err }.$metadata.httpStatusCode,
-            }
-            return res.status(err.code).json(err.name)
+            return res.json(err.name)
         } else {
             console.log(98, { ...info })
-            info = {
-                name: `Sent Resume to: ${{ ...info }.envelope.to[0]}`,
-                code: 200,
-            }
-            return res.status(info.code).json(info)
+            return res.json(info)
         }
     })
 }
